@@ -1,0 +1,18 @@
+version: '3.3'
+
+services:
+    web:
+        build: .
+        volumes:
+            - /data:/data
+            - /data/vdiconfig:/config
+        ports:
+            - 3000:3000
+            - 3001:3001
+        devices:
+            - /dev/dri:/dev/dri #optional
+        shm_size: "1gb" #optional
+        restart: unless-stopped
+        environment:
+            - PASSWORD=password
+            - CUSTOM_USER=root
